@@ -7,98 +7,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #ffe9f2;
-            font-family: "Pacifico", cursive;
-            overflow: hidden;
-        }
-
-        .slide {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 1s ease;
-            text-align: center;
-            font-size: 2rem;
-            color: #5c373a;
-            padding: 2rem;
-            border-radius: 15px;
-            max-width: 90%;
-            box-sizing: border-box;
-        }
-
-        .slide.active {
-            opacity: 1;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .slide {
-                font-size: 1.5rem;
-                padding: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .slide {
-                font-size: 1.2rem;
-                padding: 1rem;
-            }
-        }
-
-        /* Style for PC Access Message */
-        #pc-warning {
-            display: none;
-            font-size: 1.5rem;
-            text-align: center;
-            color: #333;
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
 
 <div id="mobile-content">
-    <div class="slide active">Em iu oi</div>
-    <div class="slide">Chúc bạn luôn vui vẻ và hạnh phúc!</div>
-    <div class="slide">Mong rằng mọi điều tốt lành sẽ đến với bạn!</div>
-    <div class="slide">Hãy tận hưởng ngày đặc biệt của bạn!</div>
+    <div class="slide active">
+        <h1>Em iu ơiiiiiiiiiiiiiiiiiii</h1>
+    </div>
+    <div class="slide">
+        <h3>Một năm đã trôi qua và chuẩn bị sắp đến đây em sẽ bước sang tuổi mới.</h2>
+    </div>
+    <div class="slide">
+        <h3>Tuổi mới lại đến, anh mong rằng em luôn bình an, hạnh phúc và mãi là cô gái xinh đẹp, đáng yêu mà anh yêu thương.</h2>
+    </div>
+    <div class="slide">
+        <h3>Anh sẽ luôn bên cạnh em, cùng nhau vượt qua những khó khăn mà chúng ta gặp phải.</h2>
+    </div>
+
+    <span class="help"> >> Click để tiếp tục <<</span>
 </div>
 
-<div id="pc-warning">Em iu hãy sử dụng điện thoại để có trải nghiệm tốt nhất nhoa!</div>
+<div id="pc-warning">Bx iu hãy sử dụng điện thoại để có trải nghiệm tốt nhất nhoa!</div>
 
-<script>
-    // Kiểm tra thiết bị dựa trên kích thước màn hình
-    function isMobileDevice() {
-        return /Mobi|Android/i.test(navigator.userAgent);
-    }
-
-    if (!isMobileDevice()) {
-        // Ẩn nội dung mobile và hiển thị cảnh báo trên PC
-        document.getElementById("mobile-content").style.display = "none";
-        document.getElementById("pc-warning").style.display = "block";
-    } else {
-        // Slide logic for mobile users
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-
-        function showNextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        document.addEventListener('click', showNextSlide);
-    }
-</script>
-
+<script src="./assets/js/index.js"></script>
 </body>
 </html>

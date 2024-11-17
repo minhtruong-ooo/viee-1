@@ -177,7 +177,11 @@
 
     <script>
         function isMobileDevice() {
-            return /Mobi|Android/i.test(navigator.userAgent);
+            return (
+                /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+                (typeof window.orientation !== "undefined") ||
+                (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+            );
         }
 
         if (!isMobileDevice()) {

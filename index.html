@@ -177,13 +177,21 @@
 
     <script>
         function isMobileDevice() {
-            return (
-                /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
-                (typeof window.orientation !== "undefined") ||
-                (navigator.userAgent.includes("Mac") && "ontouchend" in document)
-            );
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    
+            // Nhận diện iOS (bao gồm cả iOS 15)
+            const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+    
+            // Nhận diện Android
+            const isAndroid = /Android/i.test(userAgent);
+    
+            // Nhận diện các thiết bị hỗ trợ cảm ứng (Touch Devices)
+            const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    
+            // Xác nhận là thiết bị di động nếu thỏa mãn bất kỳ điều kiện nào
+            return isIOS || isAndroid || isTouchDevice;
         }
-
+    
         if (!isMobileDevice()) {
             // Ẩn nội dung mobile và hiển thị cảnh báo trên PC
             document.getElementById("mobile-content").style.display = "none";
@@ -192,17 +200,17 @@
             // Slide logic for mobile users
             let currentSlide = 0;
             const slides = document.querySelectorAll(".slide");
-
+    
             function showNextSlide() {
                 slides[currentSlide].classList.remove("active");
                 currentSlide = (currentSlide + 1) % slides.length;
                 slides[currentSlide].classList.add("active");
             }
-
+    
             document.addEventListener("click", showNextSlide);
         }
-
     </script>
+    
 </body>
 
 </html>

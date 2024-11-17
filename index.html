@@ -7,6 +7,10 @@
     <title>Viee</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <style>
         body,
         html {
@@ -19,6 +23,7 @@
             background-color: #ffe9f2;
             font-family: "Pacifico", cursive;
             overflow: hidden;
+            cursor: pointer;
         }
 
         h1,
@@ -44,10 +49,12 @@
             border-radius: 15px;
             width: 100%;
             box-sizing: border-box;
+            pointer-events: none;
         }
 
         .slide.active {
             opacity: 1;
+            pointer-events: auto;
         }
 
         .help {
@@ -58,6 +65,32 @@
             left: 0;
             text-align: center;
             margin-bottom: 5px;
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: flex-end;
+        }
+
+        .mobile-content-final {
+            display: none;
+        }
+        
+        .map-button {
+            display: block;
+            text-decoration: none;
+            color: #5c373a;
+        }
+
+        /* Ẩn các thẻ con trước khi slide trở thành active */
+        .anim-item {
+            opacity: 0;
+        }
+
+        /* Khi slide trở thành active, các thẻ con sẽ xuất hiện */
+        .slide.active .anim-item {
+            opacity: 1;
         }
 
         @keyframes typing {
@@ -91,6 +124,18 @@
                 font-size: 1.5rem;
                 padding: 1.5rem;
             }
+
+            .main {
+                display: none;
+            }
+
+            .img-ava {
+                width: 350px !important;
+            }
+
+            .mobile-content-final {
+                display: block;
+            }
         }
 
         @media (max-width: 480px) {
@@ -98,19 +143,22 @@
                 font-size: 1.2rem;
                 padding: 1rem;
             }
-        }
 
-        /* Style for PC Access Message */
-        #pc-warning {
-            display: none;
-            font-size: 1.5rem;
-            text-align: center;
-            color: #333;
-        }
+            .main {
+                display: none;
+            }
 
+            .img-ava {
+                width: 350px !important;
+            }
+
+            .mobile-content-final {
+                display: block;
+            }
+        }
 
         .img-ava {
-            width: 350px;
+            width: 600px;
             aspect-ratio: 1;
             object-fit: cover;
             --_m: radial-gradient(#000 69%, #0000 70%) 84.5%/50%;
@@ -131,86 +179,95 @@
             }
         }
     </style>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
 </head>
 
 <body>
 
-    <div id="mobile-content">
+    <div id="content">
         <div class="slide active">
-            <h1>Bx iu ơiiiiiiiiiiiiiiiiiii</h1>
+            <h1 class="anim-item">Bx iu ơiiiiiiiiiiiiiiiiiii</h1>
         </div>
         <div class="slide">
-            <h3>Một năm đã trôi qua và chuẩn bị sắp đến đây em sẽ bước sang tuổi mới.</h2>
+            <h3 class="anim-item">Một năm đã trôi qua và chuẩn bị sắp đến đây em sẽ bước sang tuổi mới.</h3>
         </div>
         <div class="slide">
-            <h3>Anh mong rằng em luôn bình an, hạnh phúc và mãi là cô gái xinh đẹp, đáng yêu mà anh
+            <h3 class="anim-item">Anh mong rằng em luôn bình an, hạnh phúc và mãi là cô gái xinh đẹp, đáng yêu mà anh
                 yêu thương.</h2>
         </div>
         <div class="slide">
-            <h3>Anh sẽ luôn bên cạnh em, cùng em vượt qua những khó khăn.</h2>
+            <h3 class="anim-item">Anh sẽ luôn bên cạnh em, cùng em vượt qua những khó khăn.</h3>
         </div>
         <div class="slide">
-            <h2>Chúc mừng sinh nhật em, tình yêu của đời anh !</h1>
+            <h2 class="anim-item">Chúc mừng sinh nhật em, tình yêu của đời anh !</h2>
         </div>
         <div class="slide">
-            <h3>Và anh đã chuẩn bị một bữa tiệc nho nhỏ dành cho em. Mong em sắp xếp được lịch để tham gia nhoaaa bx iu.
+            <h3 class="anim-item">Và anh đã chuẩn bị một bữa tiệc nho nhỏ dành cho em. Mong em sắp xếp được lịch để tham
+                gia nhoaaa bx iu.
             </h3>
         </div>
         <div class="slide">
-            <span>You're invited to celebrate</span>
-            <h1>Birthday
-                Party
-            </h1>
-            <h1>Hoang Viee</h1>
-            <img class="img-ava" src="./assets/imgs/bx1.png" alt="bx">
-            <h2>19:00 Sunday Nov 24</h2>
-            <h4>Mr.Saigon - Kitchen & Drinks</h4>
-            <span>126 Hoa Lan, P.2, Q.Phú Nhuận</span>
+            <div class="mobile-content-final">
+                <span>You're invited to celebrate</span>
+                <h1>Birthday
+                    Party
+                </h1>
+                <h1>Hoang Viee</h1>
+                <img class="img-ava" src="./assets/imgs/bx1.png" alt="bx">
+                <h2>19:00 Sunday Nov 24</h2>
+                <a class="map-button" target="_blank" href="https://maps.app.goo.gl/CxHTYUrwAbrrpf1NA">Mr.Saigon - Kitchen & Drinks</a>
+                <a class="map-button" target="_blank" href="https://maps.app.goo.gl/CxHTYUrwAbrrpf1NA">126 Hoa Lan, P.2, Q.Phú Nhuận</a>
+            </div>
+            <div class="main">
+                <div class="left">
+                    <span>You're invited to celebrate</span>
+                    <h1>Birthday
+                        Party
+                    </h1>
+                    <h1>Hoang Viee</h1>
+
+                    <h2>19:00 Sunday Nov 24</h2>
+                    <a class="map-button" target="_blank" href="https://maps.app.goo.gl/CxHTYUrwAbrrpf1NA">Mr.Saigon - Kitchen & Drinks</a>
+                    <a class="map-button" target="_blank" href="https://maps.app.goo.gl/CxHTYUrwAbrrpf1NA">126 Hoa Lan, P.2, Q.Phú Nhuận <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z" clip-rule="evenodd"/>
+                      </svg>
+                      </a>
+                    </a>
+                </div>
+                <div class="right">
+                    <img class="img-ava anim-item" src="./assets/imgs/bx1.png" alt="bx">
+                </div>
+            </div>
         </div>
         <span class="help"> >> Ấn vào màn hình để tiếp tục nha bx << </span>
     </div>
-
-    <div id="pc-warning">Bx iu hãy sử dụng điện thoại để có trải nghiệm tốt nhất nhoa!</div>
-
     <script>
-        function isMobileDevice() {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    
-            // Nhận diện iOS (bao gồm cả iOS 15)
-            const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
-    
-            // Nhận diện Android
-            const isAndroid = /Android/i.test(userAgent);
-    
-            // Nhận diện các thiết bị hỗ trợ cảm ứng (Touch Devices)
-            const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    
-            // Xác nhận là thiết bị di động nếu thỏa mãn bất kỳ điều kiện nào
-            return isIOS || isAndroid || isTouchDevice;
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        
+        function showNextSlide() {
+            slides[currentSlide].classList.remove("active");
+            slides[currentSlide].querySelectorAll(".anim-item").forEach(item => {
+                item.classList.remove("animate__animated", "animate__fadeInUp");
+            });
+
+           
+            currentSlide = (currentSlide + 1) % slides.length;
+
+           
+            slides[currentSlide].classList.add("active");
+            slides[currentSlide].querySelectorAll(".anim-item").forEach((item, index) => {
+                // Thêm animation với delay giữa các phần tử
+                setTimeout(() => {
+                    item.classList.add("animate__animated", "animate__fadeInUp");
+                    }, index * 1000);
+            });
         }
-    
-        if (!isMobileDevice()) {
-            // Ẩn nội dung mobile và hiển thị cảnh báo trên PC
-            document.getElementById("mobile-content").style.display = "none";
-            document.getElementById("pc-warning").style.display = "block";
-        } else {
-            // Slide logic for mobile users
-            let currentSlide = 0;
-            const slides = document.querySelectorAll(".slide");
-    
-            function showNextSlide() {
-                slides[currentSlide].classList.remove("active");
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add("active");
-            }
-    
-            document.addEventListener("click", showNextSlide);
-        }
+
+        document.addEventListener("click", showNextSlide);
+
+
     </script>
-    
+
 </body>
 
 </html>

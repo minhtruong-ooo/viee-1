@@ -24,6 +24,8 @@
             font-family: "Pacifico", cursive;
             overflow: hidden;
             cursor: pointer;
+            -webkit-tap-highlight-color: transparent; /* Ngăn highlight màu xanh */
+            user-select: none; /* Ngăn người dùng chọn nội dung */
         }
 
         h1,
@@ -50,6 +52,10 @@
             width: 100%;
             box-sizing: border-box;
             pointer-events: none;
+            -webkit-user-select: none; /* Ngăn chọn nội dung trên slide */
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         .slide.active {
